@@ -24,7 +24,8 @@ You need 3 images.
 		$('img.maskJpeg').mgJpegmask();
 	});
 	
-If you want to change mask image suffix (default "_mask") :
+If you want to change mask image suffix (default "_mask") 
+
 	$(function(){
 		$('img.maskJpeg').mgJpegmask('_suffix');
 	});
