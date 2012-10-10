@@ -5,7 +5,6 @@
  * Browser : Chrome23+ (Win/Mac) Firefox14+ (Win/Mac) Opera12+ (Win/Mac) Safari6+(Mac) IE9+(Win) IE8(Win)
  * Usage : http://
  */
-
 (function(){
 	$.fn.extend({
 		mgJpegmask:function(maskImageSuffix){
