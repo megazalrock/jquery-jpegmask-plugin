@@ -1,9 +1,11 @@
 /*
- * JPEG Mask Plugin 1.0
+ * JPEG Mask Plugin 1.0.1
  * Author : Otto Kamiya (MegazalRock)
  * License : Dual licensed under the MIT or GPL Version 2 licenses.
  * Browser : Chrome23+ (Win/Mac) Firefox14+ (Win/Mac) Opera12+ (Win/Mac) Safari6+(Mac) IE9+(Win) IE8(Win)
- * Usage : http://
+ * Usage : https://github.com/megazalrock/jquery-jpegmask-plugin/blob/master/README.md
+ * Histoy : 1.0.1 Bug fix
+ * 			1.0 Initial Release
  */
 (function(){
 	$.fn.extend({
@@ -41,12 +43,20 @@
 
 							var maskCtx = canvas.getContext('2d');
 							var jpgCtx = canvas.getContext('2d');
-
-							maskCtx.drawImage(maskImg, 0, 0);
-							var maskImgData = maskCtx.getImageData(0,0,imgSize.w,imgSize.h);
 							
+							var maskImgData,jpgImgData;
+							try{
+								maskImgData = maskCtx.getImageData(0,0,imgSize.w,imgSize.h);
+								jpgImgData = jpgCtx.getImageData(0,0,imgSize.w,imgSize.h);
+							}catch(e){
+								console.error('Set "width" and "height" attr in IMG tag');
+								console.info('width',imgSize.w);
+								console.info('height',imgSize.h);
+								console.log(e);
+							}
+							
+							maskCtx.drawImage(maskImg, 0, 0);
 							jpgCtx.drawImage(jpgImg, 0, 0);
-							var jpgImgData = jpgCtx.getImageData(0,0,imgSize.w,imgSize.h);
 						    for(var i = 0;i < px; i+=1){
 						    	jpgImgData.data[4 * i + 3] = 255 - maskImgData.data[4 * i] ;
 						    }
