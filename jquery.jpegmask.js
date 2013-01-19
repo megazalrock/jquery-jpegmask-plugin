@@ -2,10 +2,11 @@
 /*
  * JPEG Mask Plugin 1.0.1
  * Author : Otto Kamiya (MegazalRock)
- * License : Dual licensed under the MIT or GPL Version 2 licenses.
+ * License : MIT
  * Browser : Chrome23+ (Win/Mac) Firefox14+ (Win/Mac) Opera12+ (Win/Mac) Safari6+(Mac) IE9+(Win) IE8(Win)
  * Usage : https://github.com/megazalrock/jquery-jpegmask-plugin/blob/master/README.md
- * Histoy : 1.0.1 Bug fix
+ * Histoy : 1.0.2 Bug fix
+ *			1.0.1 Bug fix
  * 			1.0 Initial Release
  */
 (function(){

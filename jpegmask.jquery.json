@@ -1,0 +1,22 @@
+{
+    "name": "jpegmask",
+    "title": "jQuery JpegMask Plugin", 
+    "author": {
+        "name": "Otto Kamiya (MegazalRock)",
+        "url": "http://mgzl.jp"
+    },
+    "licenses": [{
+        "type":"MIT",
+        "url": "http://opensource.org/licenses/MIT"
+    }],
+    "description": "Mask JPEG with HTML5 Canvas",
+    "dependencies": {
+        "jquery": "1.8.0 - 1.9.0"
+    },
+    "keywords": ["jpegmask","effect","mask"],
+    "version": "1.0.2",
+    "files": ["jquery.jpegmask.js"],
+    "download":"https://github.com/megazalrock/jquery-jpegmask-plugin/archive/master.zip",
+    "homepage": "https://github.com/megazalrock/jquery-jpegmask-plugin",
+    "docs": "http://mgzl.jp/jquery-jpeg-mask-plugin/"
+}
