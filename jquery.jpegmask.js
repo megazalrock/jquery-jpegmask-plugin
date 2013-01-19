@@ -1,3 +1,4 @@
+/*global $:true, jQuery:true */
 /*
  * JPEG Mask Plugin 1.0.1
  * Author : Otto Kamiya (MegazalRock)
@@ -16,7 +17,7 @@
 					var $_img = $(this);
 					var jpgImg = $(this)[0];
 					$_img.one('load',function(){
-						$_img.css('display', 'none');	
+						$_img.css('display', 'none');
 						var jpegSrc = jpgImg.src;
 						
 						var maskSrc = jpegSrc.replace(/(.*)\.jpg$/,'$1'+ maskImageSuffix +'.png');
@@ -35,33 +36,23 @@
 							$_canvas
 								.insertAfter($_img);
 							var canvas = $_canvas[0];
-							
 							canvas.width = imgSize.w;
 							canvas.height = imgSize.h;
 							
-							var px = imgSize.w * imgSize.h;
-
-							var maskCtx = canvas.getContext('2d');
-							var jpgCtx = canvas.getContext('2d');
-							
-							var maskImgData,jpgImgData;
-							try{
-								maskImgData = maskCtx.getImageData(0,0,imgSize.w,imgSize.h);
-								jpgImgData = jpgCtx.getImageData(0,0,imgSize.w,imgSize.h);
-							}catch(e){
-								console.error('Set "width" and "height" attr in IMG tag');
-								console.info('width',imgSize.w);
-								console.info('height',imgSize.h);
-								console.log(e);
-							}
-							
+							var maskCtx,jpgCtx,maskImgData,jpgImgData,i = 0,px = imgSize.w * imgSize.h;
+							maskCtx = canvas.getContext('2d');
+							maskCtx.clearRect(0, 0, imgSize.w,imgSize.h);
 							maskCtx.drawImage(maskImg, 0, 0);
+							maskImgData = maskCtx.getImageData(0,0,imgSize.w,imgSize.h);
+							jpgCtx = canvas.getContext('2d');
+							jpgCtx.clearRect(0, 0, imgSize.w,imgSize.h);
 							jpgCtx.drawImage(jpgImg, 0, 0);
-						    for(var i = 0;i < px; i+=1){
-						    	jpgImgData.data[4 * i + 3] = 255 - maskImgData.data[4 * i] ;
-						    }
-						    jpgCtx.putImageData(jpgImgData,0,0);
-
+							jpgImgData = jpgCtx.getImageData(0,0,imgSize.w,imgSize.h);
+							
+							for(;i < px; i+=1){
+								jpgImgData.data[4 * i + 3] = 255 - maskImgData.data[4 * i] ;
+							}
+							jpgCtx.putImageData(jpgImgData,0,0);
 						};
 					});
 				}else{
